@@ -9,7 +9,7 @@ and open the template in the editor.
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <head>
-        <title>Current Movies</title>
+        <title>MovieNow</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         
         <!-- CSS stylesheet declarations and inclusions for custom styles, apis, and style/icon libraries -->
@@ -32,6 +32,12 @@ and open the template in the editor.
             </ui:insert>
         </div>
         <div>TODO write content</div>
+        <!-- The templated footer component to be visible by ALL pages -->
+        <div id="footer">
+            <ui:insert name="footer" >
+                <ui:include src="footer.xhtml" />
+            </ui:insert>
+        </div>
         
     </body>
 </html>

@@ -9,7 +9,27 @@ and open the template in the editor.
 */
 
 #header{
-    background-color: red;
+    background-color: #e95051;
     height: 60px;
     width: 100%;
+}
+
+/**
+ * Footer CSS Rules
+ */
+div.footer {
+    /* Style and positioning to customize the footer to match theme/brand */
+    background-color: #e95051;
+    color: white;
+    height: 30px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -30px;
+}
+
+div.footer .footer-text {
+    /* Positioning for the text inside of the navbar */
+    margin-bottom: 0;
+    margin-top: 5px;
 }
