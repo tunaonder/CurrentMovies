@@ -44,7 +44,7 @@ public class MovieManager implements Serializable {
     private int audience_score;
     private String synopsis;
     private String imageUrl;
-    private ArrayList<String> cast = new ArrayList<String>();
+    ArrayList<String> cast = new ArrayList<String>();
     
     JSONArray jsonCast;
     
@@ -82,8 +82,17 @@ public class MovieManager implements Serializable {
                 synopsis = jsonMovie.get("synopsis").toString();
                 imageUrl = jsonMovie.getJSONObject("posters").get("original").toString();
                 
+                
                 jsonCast = jsonMovie.getJSONArray("abridged_cast");
+                
+                cast = new ArrayList<String>();
+                //If there is no cast give add, cast info
+                if(jsonCast.length() == 0){
+                    cast.add("No Cast For This Movie");
+                    cast.add("");
+                }
                 for(int j=0; j<jsonCast.length(); j++){
+                    
                     cast.add(jsonCast.getJSONObject(j).get("name").toString());                 
                     
                 }
