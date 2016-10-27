@@ -34,6 +34,7 @@ public class MovieManager implements Serializable {
     
     Movie newMovie;
     Movie [] movies = new Movie[50];
+    Movie displayedMovie;
     
     private String title;
     private int year;
@@ -103,20 +104,6 @@ public class MovieManager implements Serializable {
                 
                 
             }
-//            jsonMovie = movieContent.getJSONObject(3);
-//            
-//            JSONObject poster = jsonMovie.getJSONObject("posters");
-//            content2 = poster.get("original").toString();
-//            imageUrl = poster.get("thumbnail").toString();
-            
-//           content2 = poster.getJSONObject("original").toString();
-            
-            
-            
-//            JSONObject photos = movie.getJSONObject("posters");
-//            imageUrl = (String) photos.get("thumbnail");
-//            
-//            content = jsonResult.toString();
             
         } catch (Exception ex) {
             Logger.getLogger(MovieManager.class.getName()).log(Level.SEVERE, null, ex);
@@ -173,14 +160,23 @@ public class MovieManager implements Serializable {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public Movie[] getMovies() {
         return movies;
     }
+
+    public Movie getDisplayedMovie() {
+        return displayedMovie;
+    }
     
+    
+    
+    public String displayMovie(Movie movie){
+        
+        displayedMovie = movie;
+        
+        
+        return "movieView?faces-redirect=true";
+    }
     
     
     

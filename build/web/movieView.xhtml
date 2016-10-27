@@ -1,19 +1,48 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"   
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-   
-    <!-- Create the content for this page below -->
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+
     <ui:composition template="templates/siteTemplate.xhtml">
-        <!-- Create the content for this page below -->
         <ui:define name="content">
-            Test
+
+            <!--            If movie is not selected from list do not display the content-->
+            <c:if test="#{movieManager.displayedMovie != null}">
+                <div class="detailContent">
+                    <h:outputText value="#{movieManager.displayedMovie.title} (#{movieManager.displayedMovie.year})" class="detailedTitle" />
+
+                    <div class="imageContainer">
+                        <p:graphicImage url="#{movieManager.displayedMovie.imageUrl}" class="detailedImageView" />
+
+                        <div style="display: block;">
+                            <h:outputText value="Cast" style="font-size: 25px; margin-left: 200px; display: block; color: #7D1935;" />
+                            <h:outputText value="#{movieManager.displayedMovie.cast.get(0)}" class="detailedCast" />
+                            <h:outputText value="#{movieManager.displayedMovie.cast.get(1)}" class="detailedCast" />
+                            <h:outputText value="#{movieManager.displayedMovie.cast.get(2)}" class="detailedCast" />
+                            <h:outputText value="#{movieManager.displayedMovie.cast.get(3)}" class="detailedCast" />
+                        </div>
+
+                    </div>
+
+                    <h:outputText value="#{movieManager.displayedMovie.synopsis}" class="detailedSynopsis" />
+
+                </div>
+
+
+
+
+            </c:if>
+            <c:if test="#{movieManager.displayedMovie == null}">
+                Movie Is Not Selected
+            </c:if>
+
+
         </ui:define>
     </ui:composition>
+
 </html>
+

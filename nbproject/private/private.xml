@@ -3,8 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/Onder/NetBeansProjects/CurrentMovies-Onder/src/java/com/movienow/managers/MovieManager.java</file>
-            <file>file:/Users/Onder/NetBeansProjects/CurrentMovies-Onder/src/java/com/movienow/managers/Movie.java</file>
+            <file>file:/Users/Onder/NetBeansProjects/CurrentMovies-Onder/web/movieView.xhtml</file>
+            <file>file:/Users/Onder/NetBeansProjects/CurrentMovies-Onder/web/resources/css/styles.css</file>
+            <file>file:/Users/Onder/NetBeansProjects/CurrentMovies-Onder/web/movieList.xhtml</file>
         </group>
     </open-files>
 </project-private>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:composition template="templates/siteTemplate.xhtml">
+      
+        <ui:define name="content">
+            
+            <div class="content">
+
+                <h:form>
+                    <p:dataGrid columns="6" value="#{movieManager.movies}" var="movie">
+                        <h:commandLink action="#{movieManager.displayMovie(movie)}">
+                            <p:column >
+                                <div class="movieContainer">
+                                    <h:outputText value="#{movie.title}" class="movieTitle listLabel" />
+                                    <p:graphicImage url="#{movie.imageUrl}" class="posterView listLabel"/>
+                                    <h:outputText value="#{movie.cast.get(0)}" class="castName listLabel" />
+                                    <h:outputText value="#{movie.cast.get(1)}" class="castName2 listLabel" />
+                                    <h:outputText value="Rating: #{movie.audience_score}" class="scoreText listLabel" />
+                                </div>
+                            </p:column>
+                        </h:commandLink>
+                            
+                       
+                    </p:dataGrid>
+
+                </h:form>
+
+
+            </div>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
