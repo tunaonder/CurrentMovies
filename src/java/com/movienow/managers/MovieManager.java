@@ -87,15 +87,23 @@ public class MovieManager implements Serializable {
 
                 cast = new ArrayList<String>();
                 //If there is no cast give add, cast info
-                if (jsonCast.length() == 0) {
-                    cast.add("No Cast For This Movie");
-                    cast.add("");
+                switch (jsonCast.length()) {
+                    case 0:
+                        cast.add("No Cast For This Movie");
+                        cast.add("");
+                        break;
+                    case 1:
+                        cast.add(jsonCast.getJSONObject(0).get("name").toString());
+                        cast.add("");
+                        break;
+                    default:
+                        for (int j = 0; j < jsonCast.length(); j++) {
+                            
+                            cast.add(jsonCast.getJSONObject(j).get("name").toString());
+                            
+                        }       break;
                 }
-                for (int j = 0; j < jsonCast.length(); j++) {
-
-                    cast.add(jsonCast.getJSONObject(j).get("name").toString());
-
-                }
+                
 
                 //Create Another JSON REQUEST URL for Images
                 //Make the json structure as OMDB requires

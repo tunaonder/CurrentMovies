@@ -59,16 +59,16 @@ div.detailContent{
 
 div.movieContainer{
 
-    width: 15vw;
+    width: 18vw;
     margin: 0.5vw;
-    height: 400px;
+    height: 500px;
     position: relative;
 
 }
 /*Absoulate position in relative position*/
 .posterView{
     width: 100%;
-    height: 280px;
+    height: 380px;
     position: absolute;
     top: 55px;
     left: 0px;
@@ -106,10 +106,11 @@ div.movieContainer{
 /*Detailed Movie Page*/
 
 .detailedTitle{
-    margin-left: 20px;
+    margin-left: 40px;
     color: goldenrod;
     font-size: 30px;
     display: block;
+    padding-top: 30px;
 }
 
 #wrapper{
@@ -119,10 +120,9 @@ div.movieContainer{
 }
 
 .imageContainer{
-    margin-left: 20px;
-
-    width: 47%;
-    height: 300px;
+    margin-left: 40px;
+    width: 60%;
+    height:  650px;
     position: relative;
     float: left;
 
@@ -130,17 +130,18 @@ div.movieContainer{
 }
 
 .detailedScoreContainer{
-    width: 50%;
+    width: 37%;
     float: right;
 
 
 }
 
 .detailedImageView{    
-    height: 250px;
+    height: 600px;
     width: auto;
     float: left;
     background-color: blue;
+    max-width: 500px;
 }
 
 .detailedCast{
@@ -157,6 +158,7 @@ div.movieContainer{
     bottom: 0px;
     position: absolute;
     bottom: 50px;
+    min-width: 100px;
 
 }
 .detailedRating{

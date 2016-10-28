@@ -22,12 +22,18 @@
 
                                 <h:outputText value="Cast" style="font-size: 25px; margin-left: 20px; color: goldenrod;" />
                                 <br/>
-                                <h:outputText value="#{movieManager.displayedMovie.cast.get(0)}" class="detailedCast" />
+                                <c:if test="#{movieManager.displayedMovie.cast.size() >=1}">
+                                    <h:outputText value="#{movieManager.displayedMovie.cast.get(0)}" class="detailedCast" />
                                 <br/>
-                                <h:outputText value="#{movieManager.displayedMovie.cast.get(1)}" class="detailedCast" />
+                                </c:if>
+                                <c:if test="#{movieManager.displayedMovie.cast.size() >=2}">
+                                    <h:outputText value="#{movieManager.displayedMovie.cast.get(1)}" class="detailedCast" />
                                 <br/>
-                                <h:outputText value="#{movieManager.displayedMovie.cast.get(2)}" class="detailedCast" />
+                                </c:if>
+                                <c:if test="#{movieManager.displayedMovie.cast.size() >=3}">
+                                    <h:outputText value="#{movieManager.displayedMovie.cast.get(2)}" class="detailedCast" />
                                 <br/>
+                                </c:if>
                                 <c:if test="#{movieManager.displayedMovie.cast.size() >=4}">
                                     <h:outputText value="#{movieManager.displayedMovie.cast.get(3)}" class="detailedCast" />
                                 <br/>
