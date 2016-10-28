@@ -21,4 +21,9 @@ public class ImageManager {
     public List<String> getImages() {
         return images;
     }
+    
+    public String movieSelected(){
+        System.out.println("asdasd");
+        return "movieView.xhtml?faces-redirect=true";
+    }
 }

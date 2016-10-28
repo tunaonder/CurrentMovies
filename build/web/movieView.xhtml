@@ -9,83 +9,84 @@
 
     <ui:composition template="templates/siteTemplate.xhtml">
         <ui:define name="content">
+            <div class="content">
+                <!--            If movie is not selected from list do not display the content-->
+                <c:if test="#{movieManager.displayedMovie != null}">
+                    <div class="detailContent">
+                        <h:outputText value="#{movieManager.displayedMovie.title} (#{movieManager.displayedMovie.year})" class="detailedTitle" />
+                        <div id="wrapper">
+                            <div class="imageContainer">
+                                <p:graphicImage url="#{movieManager.displayedMovie.imageUrl}" class="detailedImageView" />
 
-            <!--            If movie is not selected from list do not display the content-->
-            <c:if test="#{movieManager.displayedMovie != null}">
-                <div class="detailContent">
-                    <h:outputText value="#{movieManager.displayedMovie.title} (#{movieManager.displayedMovie.year})" class="detailedTitle" />
-                    <div id="wrapper">
-                        <div class="imageContainer">
-                            <p:graphicImage url="#{movieManager.displayedMovie.imageUrl}" class="detailedImageView" />
+                                <div >
 
-                            <div >
+                                    <h:outputText value="Cast" style="font-size: 25px; margin-left: 20px; color: goldenrod;" />
+                                    <br/>
+                                    <c:if test="#{movieManager.displayedMovie.cast.size() >=1}">
+                                        <h:outputText value="#{movieManager.displayedMovie.cast.get(0)}" class="detailedCast" />
+                                        <br/>
+                                    </c:if>
+                                    <c:if test="#{movieManager.displayedMovie.cast.size() >=2}">
+                                        <h:outputText value="#{movieManager.displayedMovie.cast.get(1)}" class="detailedCast" />
+                                        <br/>
+                                    </c:if>
+                                    <c:if test="#{movieManager.displayedMovie.cast.size() >=3}">
+                                        <h:outputText value="#{movieManager.displayedMovie.cast.get(2)}" class="detailedCast" />
+                                        <br/>
+                                    </c:if>
+                                    <c:if test="#{movieManager.displayedMovie.cast.size() >=4}">
+                                        <h:outputText value="#{movieManager.displayedMovie.cast.get(3)}" class="detailedCast" />
+                                        <br/>
+                                    </c:if>
+                                    <c:if test="#{movieManager.displayedMovie.cast.size() >=5}">
+                                        <h:outputText value="#{movieManager.displayedMovie.cast.get(4)}" class="detailedCast" />
+                                        <br/>
+                                    </c:if>
 
-                                <h:outputText value="Cast" style="font-size: 25px; margin-left: 20px; color: goldenrod;" />
-                                <br/>
-                                <c:if test="#{movieManager.displayedMovie.cast.size() >=1}">
-                                    <h:outputText value="#{movieManager.displayedMovie.cast.get(0)}" class="detailedCast" />
-                                <br/>
-                                </c:if>
-                                <c:if test="#{movieManager.displayedMovie.cast.size() >=2}">
-                                    <h:outputText value="#{movieManager.displayedMovie.cast.get(1)}" class="detailedCast" />
-                                <br/>
-                                </c:if>
-                                <c:if test="#{movieManager.displayedMovie.cast.size() >=3}">
-                                    <h:outputText value="#{movieManager.displayedMovie.cast.get(2)}" class="detailedCast" />
-                                <br/>
-                                </c:if>
-                                <c:if test="#{movieManager.displayedMovie.cast.size() >=4}">
-                                    <h:outputText value="#{movieManager.displayedMovie.cast.get(3)}" class="detailedCast" />
-                                <br/>
-                                </c:if>
-                                <c:if test="#{movieManager.displayedMovie.cast.size() >=5}">
-                                    <h:outputText value="#{movieManager.displayedMovie.cast.get(4)}" class="detailedCast" />
-                                <br/>
-                                </c:if>
-                                
-                                <h:outputText value="MPAA-Rating: #{movieManager.displayedMovie.rating}" class="detailedRating" />
-                                <br/>
-                                <h:outputText value="Release Date: #{movieManager.displayedMovie.release_date}" class="detailedDate" />
+                                    <h:outputText value="MPAA-Rating: #{movieManager.displayedMovie.rating}" class="detailedRating" />
+                                    <br/>
+                                    <h:outputText value="Release Date: #{movieManager.displayedMovie.release_date}" class="detailedDate" />
+                                </div>
+
+
+
+
                             </div>
+                            <div class="detailedScoreContainer">
+                                <div>
+                                    <img src="resources/images/critics.jpg" style="width: 100px;"/>
+                                    <br/>
+                                    <h:outputText value="Critics Score: #{movieManager.displayedMovie.critics_score}" class="detailedScore" />
+                                </div>
 
 
 
+                                <div style="margin-top: 50px;">
+                                    <img src="resources/images/audience.jpg" style="width: 100px;"/>
+                                    <br/>
 
+                                    <h:outputText value="Audience Score: #{movieManager.displayedMovie.audience_score}" class="detailedScore" />
+                                </div>
+
+
+                            </div>
                         </div>
-                        <div class="detailedScoreContainer">
-                            <div>
-                                <img src="resources/images/critics.jpg" style="width: 100px;"/>
-                                <br/>
-                                <h:outputText value="Critics Score: #{movieManager.displayedMovie.critics_score}" class="detailedScore" />
-                            </div>
 
+                        <h:outputText value="#{movieManager.displayedMovie.synopsis}" class="detailedSynopsis" />
 
-
-                            <div style="margin-top: 50px;">
-                                <img src="resources/images/audience.jpg" style="width: 100px;"/>
-                                <br/>
-
-                                <h:outputText value="Audience Score: #{movieManager.displayedMovie.audience_score}" class="detailedScore" />
-                            </div>
-
-
-                        </div>
                     </div>
 
-                    <h:outputText value="#{movieManager.displayedMovie.synopsis}" class="detailedSynopsis" />
-
-                </div>
 
 
 
+                </c:if>
+                <c:if test="#{movieManager.displayedMovie == null}">
+                    Movie Is Not Selected
+                </c:if>
 
-            </c:if>
-            <c:if test="#{movieManager.displayedMovie == null}">
-                Movie Is Not Selected
-            </c:if>
-
-
+            </div>
         </ui:define>
+
     </ui:composition>
 
 </html>

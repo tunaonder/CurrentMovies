@@ -31,7 +31,9 @@ public class MovieManager implements Serializable {
 
     //Restful Requests Base URL
     private final String baseUrl = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=g9qcds978gjpn6a3k78zzj7m&page_limit=50";
-    private String baseUrl2 = "http://www.omdbapi.com/?t=";
+    
+    //OMDB API BASE URL
+    private final String baseUrl2 = "http://www.omdbapi.com/?t=";
     Movie newMovie;
     Movie[] movies = new Movie[50];
     Movie displayedMovie;

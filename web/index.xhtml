@@ -7,17 +7,52 @@
 
 
     <ui:composition template="templates/siteTemplate.xhtml">
+
         <ui:define name="content">
-            <div class="content">
-                <p:galleria value="#{imageManager.images}" var="image" panelWidth="800" panelHeight="600" showCaption="true">
-                    <p:graphicImage name="images/#{image}" alt="Image Description for #{image}" title="#{image}" style="width: 100%;"/>
-                    
-                </p:galleria>
-                
+
+            <div class="indexContent">
+
+                <div id="galeriaContainer">
+                    <p:panel id="galeriaPanel">
+                        <p:commandLink action="#{imageManager.movieSelected()}">
+                            <p:galleria class="galeria" value="#{imageManager.images}" var="image" panelWidth="800" panelHeight="600" showCaption="true">
+
+                                <p:graphicImage name="images/#{image}"  title=" " style="height: 100%; width: 100%;"/>
+
+                            </p:galleria>
+                        </p:commandLink>
+
+                    </p:panel>
+
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <div id="websiteLinkContainer"> 
+                        <a class="websiteLinks" href="http://www.imdb.com/">IMDB</a>
+                        <a class="websiteLinks" href="https://www.rottentomatoes.com/">Rotten Tomatoes</a>
+                        <a class="websiteLinks" href="https://www.omdbapi.com/">OMDb</a>
+                    </div>
+
+                </ul>
 
 
             </div>
         </ui:define>
+        <ui:define name="footer">
+
+            <div id="footer" class="footer2">
+                <!-- 
+                Wrapper div element to center the footer content in the 
+                browser 
+                -->
+
+                <p class="footer-text">Copyright © 2016. MovieNow </p>
+
+            </div>
+
+
+        </ui:define>
+
     </ui:composition>
 
 </html>
