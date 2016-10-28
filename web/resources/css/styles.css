@@ -8,6 +8,12 @@ and open the template in the editor.
     Author     : Onder
 */
 
+/*Main Background Color */
+td{
+    background-color: #404040;
+}
+
+
 
 /**
  * Header CSS Rules
@@ -18,22 +24,37 @@ div.header{
     width: 100%;
 }
 
+#appName{
+    float: left;
+    text-decoration: underline;
+    font-size: 50px;
+    margin-left: 20px;
+    margin-top: 10px;
+    color: goldenrod;
+    cursor: pointer;
+    font-family: Impact, Charcoal, sans-serif;
+}
+
 /**
  * Content CSS Rules
  */
 
 div.content{
+    height: calc(100vw - 130px);
+}
+
+div.listContent{
 
     height: 100%;
 
 }
 div.detailContent{
-
+    background-color: #404040;
     height: calc(100vw - 130px);
 
 }
 .listLabel{
-    color: wheat;
+    color: goldenrod;
 }
 
 div.movieContainer{
@@ -80,25 +101,39 @@ div.movieContainer{
     right: 0px;
 }
 
-td{
-    background-color: #404040;
-}
+
 
 /*Detailed Movie Page*/
 
 .detailedTitle{
-    display: block;
     margin-left: 20px;
-    margin-top: 20px;
+    color: goldenrod;
     font-size: 30px;
+    display: block;
+}
+
+#wrapper{
+    margin-top: 20px;
+    width: 100%;
+    overflow: auto;
 }
 
 .imageContainer{
     margin-left: 20px;
-    margin-top: 20px;
-    display: block;
-    width: 100%; 
+
+    width: 47%;
     height: 300px;
+    position: relative;
+    float: left;
+
+
+}
+
+.detailedScoreContainer{
+    width: 50%;
+    float: right;
+
+
 }
 
 .detailedImageView{    
@@ -109,15 +144,46 @@ td{
 }
 
 .detailedCast{
-    margin-top: 5px;
-    display: block;
-    margin-left: 200px;
+    margin-top: 10px;   
+    margin-left: 20px;
     font-size: 20px;
+    color: wheat;
 
 }
+.detailedDate{
+    font-size: 20px;
+    margin-left: 20px;
+    color: wheat;
+    bottom: 0px;
+    position: absolute;
+    bottom: 50px;
+
+}
+.detailedRating{
+    font-size: 20px;
+    margin-left: 20px;
+    color: wheat;
+    bottom: 0px;
+    position: absolute;
+    bottom: 80px;
+
+}
+
+.detailedScore{
+    color: wheat;
+
+}
+
+
 .detailedSynopsis{
     display: block;
-    
+    height: 300px;
+    margin-left: 20px;
+    width: 80%;
+    color: white;
+    background-color: #404444;
+    border-radius: 20px;
+
 }
 
 
