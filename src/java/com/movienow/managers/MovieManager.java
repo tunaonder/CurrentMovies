@@ -18,7 +18,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Named;
 import org.primefaces.json.JSONArray;
-import org.primefaces.json.JSONException;
 import org.primefaces.json.JSONObject;
 
 /**
@@ -107,8 +106,8 @@ public class MovieManager implements Serializable {
                 //Read the content from created url and create JSon Object
                 jsonResult2 = new JSONObject(readUrlContent(omdbRequestUrl));
                 
-                //If Returned JSON has a Key Name is Poster (Do it only for first 20 items)
-                if (jsonResult2.has("Poster") && i< 20) {
+                //If Returned JSON has a Key Name is Poster
+                if (jsonResult2.has("Poster")) {
                     String posterUrl= jsonResult2.get("Poster").toString();
                     //If Image Url Is Equal to N/A do not change the image url which is gotten from previous API 
                     if(!posterUrl.equals("N/A")){
@@ -121,6 +120,8 @@ public class MovieManager implements Serializable {
                 movies[i] = newMovie;
 
             }
+            displayedMovie = newMovie;
+            
 
         } catch (Exception ex) {
             Logger.getLogger(MovieManager.class.getName()).log(Level.SEVERE, null, ex);
@@ -187,22 +188,8 @@ public class MovieManager implements Serializable {
 
         displayedMovie = movie;
 
-        return "movieView?faces-redirect=true";
+        return "movieView.xhtml?faces-redirect=true";
     }
 
-    public boolean isJSONValid(String test) {
-        try {
-            new JSONObject(test);
-        } catch (JSONException ex) {
-            // edited, to include @Arthur's comment
-            // e.g. in case JSONArray is valid as well...
-            try {
-                new JSONArray(test);
-            } catch (JSONException ex1) {
-                return false;
-            }
-        }
-        return true;
-    }
 
 }
