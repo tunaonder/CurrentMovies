@@ -11,17 +11,22 @@ and open the template in the editor.
     <h:head>
         <title>MovieNow</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        
+
         <!-- CSS stylesheet declarations and inclusions for custom styles, apis, and style/icon libraries -->
-    
+
         <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css" /> 
         <link rel="stylesheet" type="text/css" href="resources/css/styles.css" /> 
+        <h:outputScript library="js" name="movies.js"/>
+        <!-- The following CSS and JavaScript files are needed for the Image Slider -->
+        <h:outputStylesheet library="css" name="js-image-slider.css" />
+        <script src="resources/js/js-image-slider.js" type="text/javascript"></script>
 
-        
+
+
     </h:head>
     <h:body>
-       
-                <!-- The templated header component to be visible by ALL pages-->
+
+        <!-- The templated header component to be visible by ALL pages-->
         <div id="header">
             <ui:insert name="header" >
                 <ui:include src="header.xhtml" />
@@ -38,7 +43,7 @@ and open the template in the editor.
                 <ui:include src="footer.xhtml" />
             </ui:insert>
         </div>
-    
-        
+
+
     </h:body>
 </html>

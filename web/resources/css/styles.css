@@ -73,20 +73,12 @@ div.content{
 
 }
 
-#galeriaPanel{
-    background-color: #404040;
-    border: none;
+#sliderFrame{
+    margin-top: 50px;
+    
 }
 
 
-#galeriaContainer{
-    padding-top: 50px;
-
-}
-.galeria{
-    margin: 0 auto;
-    background-color: #404040;
-}
 
 #websiteLinkContainer{
     

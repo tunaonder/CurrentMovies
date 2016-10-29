@@ -12,17 +12,45 @@
 
             <div class="indexContent">
 
-                <div id="galeriaContainer">
-                    <p:panel id="galeriaPanel">
-                        <p:commandLink action="#{imageManager.movieSelected()}">
-                            <p:galleria class="galeria" value="#{imageManager.images}" var="image" panelWidth="800" panelHeight="600" showCaption="true">
+                <div id="sliderFrame">
+                    <div id="slider">
+                        <a href="http://www.imdb.com/title/tt2404435/" target="_blank">
+                            <img src="resources/images/movie1.jpg" alt="Click to The Magnificient Seven on IMDB" />
+                        </a>
 
-                                <p:graphicImage name="images/#{image}"  title=" " style="height: 100%; width: 100%;"/>
+                        <img src="resources/images/movie2.jpg" alt="I'm Not Ashamed" />
 
-                            </p:galleria>
-                        </p:commandLink>
+                        <img src="resources/images/movie3.jpg"  />
 
-                    </p:panel>
+                        <img src="resources/images/movie4.jpg" alt="Kevin Hart: What Now?"/>
+                        <img src="resources/images/movie5.jpg" alt="Storks"/>
+
+                        <a href="http://www.imdb.com/title/tt1386697/?ref_=nv_sr_1" target="_blank">
+                            <img src="resources/images/movie6.jpg" alt="Click to view Suicide Squad on IMDB" />
+                        </a>
+
+                        <img src="resources/images/movie7.jpg" alt="The Girl On The Train"/>
+                        <img src="resources/images/movie8.jpg" alt="Deepwater Horizon"/>
+
+                        <a href="http://www.imdb.com/title/tt2910904/?ref_=nv_sr_1" target="_blank">
+                            <img src="resources/images/movie9.jpg" alt="Click to view The Dressmaker" />
+                        </a>
+                        <img src="resources/images/movie10.jpg" alt="Snowden"/>
+
+                        <img src="resources/images/movie11.jpg" />
+
+                        <a href="http://www.imdb.com/title/tt4196450/?ref_=nv_sr_1" target="_blank">
+                            <img src="resources/images/movie12.jpg" alt="The Birth of a Nation" />
+                        </a>
+                    </div>
+
+                    <div id="captionForPhoto3" style="display: none;">
+                        Click for more information: <a href="https://www.vt.edu/about/buildings/lane-stadium-worsham-field.html" target="_blank">Lane Stadium</a>
+                    </div>
+
+                    <div id="captionForPhoto11" style="display: none;">
+                        New Engineering Building: <a href="https://www.vt.edu/about/buildings/signature-engineering.html" target="_blank">Goodwin Hall</a>
+                    </div>
 
                 </div>
 
@@ -37,6 +65,8 @@
 
 
             </div>
+
+
         </ui:define>
         <ui:define name="footer">
 
@@ -54,6 +84,10 @@
         </ui:define>
 
     </ui:composition>
+
+
+
+
 
 </html>
 
