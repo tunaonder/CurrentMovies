@@ -43,10 +43,11 @@ div.header{
 }
 
 #headerButtonContainer{
-    width: 300px;
-    margin-top: 40px;
-    margin-right: 40px;
+    width: 400px;
+    margin-top: 20px;
+    margin-right: 20px;
     text-decoration: underline;
+    
 
 
 
@@ -56,6 +57,7 @@ div.header{
     font-size: 30px;
     margin-left: 20px;
     font-family: Impact, Charcoal, sans-serif;
+    float: right;
     color: white;
 }
 /**
@@ -63,7 +65,7 @@ div.header{
  */
 
 div.indexContent{
-
+    background-color: #404040;
     height: 100%;
 
 }
