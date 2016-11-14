@@ -11,6 +11,8 @@ import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -29,25 +31,26 @@ import org.primefaces.json.JSONObject;
 @Named(value = "movieManager")
 public class MovieManager implements Serializable {
 
-    //Restful Requests Base URL
-    private final String baseUrl = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=g9qcds978gjpn6a3k78zzj7m&page_limit=50";
-    
     //OMDB API BASE URL
     private final String baseUrl2 = "http://www.omdbapi.com/?t=";
+
+    private final String moviesUrl = "https://api.themoviedb.org/3/movie/now_playing?api_key=dd424332d7b9f6b37f3aeaab413fbca7";
+
     Movie newMovie;
-    Movie[] movies = new Movie[50];
+    Movie[] movies;
     Movie displayedMovie;
 
     private String title;
-    private int year;
+    private String year;
     private String rating;
     private String runtime;
     private String release_date;
-    private int critics_score;
-    private int audience_score;
+    private String meta_score;
+    private String imdb_score;
     private String synopsis;
     private String imageUrl;
-    ArrayList<String> cast = new ArrayList<String>();
+    private String movieCast;
+    List<String> cast = new ArrayList<>();
 
     JSONArray jsonCast;
     String omdbRequestUrl = "";
@@ -67,71 +70,102 @@ public class MovieManager implements Serializable {
     public void init() {
 
         try {
-
-            jsonResult = new JSONObject(readUrlContent(baseUrl));
-
-            movieContent = jsonResult.getJSONArray("movies");
-
-            for (int i = 0; i < movieContent.length(); i++) {
+            jsonResult = new JSONObject(readUrlContent(moviesUrl));
+            JSONArray movieContent = jsonResult.getJSONArray("results");
+            
+            
+            int count = movieContent.length();
+           
+            movies = new Movie[count];            
+            for (int i = 0; i < count; i++) {
                 jsonMovie = movieContent.getJSONObject(i);
-
-                title = jsonMovie.get("title").toString();
-                year = jsonMovie.getInt("year");
-                rating = jsonMovie.get("mpaa_rating").toString();
-                runtime = jsonMovie.get("runtime").toString();
-                release_date = jsonMovie.getJSONObject("release_dates").get("theater").toString();
-                critics_score = jsonMovie.getJSONObject("ratings").getInt("critics_score");
-                audience_score = jsonMovie.getJSONObject("ratings").getInt("audience_score");
-                synopsis = jsonMovie.get("synopsis").toString();
-                imageUrl = jsonMovie.getJSONObject("posters").get("original").toString();
-
-                jsonCast = jsonMovie.getJSONArray("abridged_cast");
-
-                cast = new ArrayList<String>();
-                //If there is no cast give add, cast info
-                switch (jsonCast.length()) {
-                    case 0:
-                        cast.add("No Cast For This Movie");
-                        cast.add("");
-                        break;
-                    case 1:
-                        cast.add(jsonCast.getJSONObject(0).get("name").toString());
-                        cast.add("");
-                        break;
-                    default:
-                        for (int j = 0; j < jsonCast.length(); j++) {
-                            
-                            cast.add(jsonCast.getJSONObject(j).get("name").toString());
-                            
-                        }       break;
-                }
                 
+                
+                title = jsonMovie.get("title").toString();
 
                 //Create Another JSON REQUEST URL for Images
                 //Make the json structure as OMDB requires
                 omdbRequestUrl = baseUrl2 + title;
                 omdbRequestUrl = omdbRequestUrl.replace(" ", "+");
                 omdbRequestUrl = omdbRequestUrl + "&y=&plot=short&r=json";
-                
+
                 //Read the content from created url and create JSon Object
                 jsonResult2 = new JSONObject(readUrlContent(omdbRequestUrl));
-                
-                //If Returned JSON has a Key Name is Poster
-                if (jsonResult2.has("Poster")) {
-                    String posterUrl= jsonResult2.get("Poster").toString();
-                    //If Image Url Is Equal to N/A do not change the image url which is gotten from previous API 
-                    if(!posterUrl.equals("N/A")){
-                        imageUrl = posterUrl;
+
+                if (jsonResult2.has("Year")) {
+                    year = jsonResult2.get("Year").toString();
+                } else {
+                    year = "N/A";
+                }
+                if (jsonResult2.has("Rated")) {
+                    rating = jsonResult2.get("Rated").toString();
+                } else {
+                    rating = "N/A";
+                }
+                if (jsonResult2.has("Runtime")) {
+                    runtime = jsonResult2.get("Runtime").toString();
+                } else {
+                    runtime = "N/A";
+                }
+                if (jsonResult2.has("Metascore")) {
+                    meta_score = jsonResult2.get("Metascore").toString();
+                } else {
+                    meta_score = "N/A";
+                }
+                if (jsonResult2.has("imdbRating")) {
+                    imdb_score = jsonResult2.get("imdbRating").toString();
+                } else {
+                    imdb_score = "N/A";
+                }
+                if (jsonResult2.has("Release")) {
+                    release_date = jsonResult2.get("Release").toString();
+                } else {
+                    release_date = "N/A";
+                }
+                if (jsonResult2.has("Plot")) {
+                    synopsis = jsonResult2.get("Plot").toString();
+                    if(synopsis.equals("N/A")){
+                        synopsis = jsonMovie.get("overview").toString();
+                    }
+                } else {
+                    synopsis = "N/A";
+                }
+                if (jsonResult2.has("Actors")) {
+                    movieCast = jsonResult2.get("Actors").toString();
+                    String[] actors = movieCast.split(",");
+                    cast = Arrays.asList(actors);
+                    if(cast.isEmpty()){
+                        cast = new ArrayList<>();
+                        cast.add("N/A");
+                        cast.add("N/A");
+                    }
+                    else if(cast.size() == 1){
+                        String temp = cast.get(0);
+                        cast = new ArrayList<>();
+                        cast.add(temp);
+                        cast.add("N/A");
                     }
                     
                 }
+                
+               
+                //If Returned JSON has a Key Name Poster
+                if (jsonResult2.has("Poster")) {
+                    String posterUrl = jsonResult2.get("Poster").toString();
+                    //If Image Url Is Equal to N/A do not change the image url which is gotten from previous API 
+                    if (!posterUrl.equals("N/A")) {
+                        imageUrl = posterUrl;
+                    } else {
+                        imageUrl = "";
+                    }
 
-                newMovie = new Movie(title, year, rating, runtime, release_date, critics_score, audience_score, synopsis, imageUrl, cast);
+                }
+
+                newMovie = new Movie(title, year, rating, runtime, release_date, meta_score, imdb_score, synopsis, imageUrl, cast);
                 movies[i] = newMovie;
 
             }
             displayedMovie = newMovie;
-            
 
         } catch (Exception ex) {
             Logger.getLogger(MovieManager.class.getName()).log(Level.SEVERE, null, ex);
@@ -200,6 +234,5 @@ public class MovieManager implements Serializable {
 
         return "movieView.xhtml?faces-redirect=true";
     }
-
 
 }

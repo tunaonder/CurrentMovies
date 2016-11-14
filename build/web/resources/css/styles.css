@@ -189,7 +189,7 @@ div.movieContainer{
 
 .imageContainer{
     margin-left: 40px;
-    width: 60%;
+    width: 50%;
     height:  650px;
     position: relative;
     float: left;
@@ -200,7 +200,7 @@ div.movieContainer{
 .detailedScoreContainer{
     width: 37%;
     font-size: 18px;
-    float: right;
+    float: left;
 
 
 }
@@ -209,7 +209,6 @@ div.movieContainer{
     height: 600px;
     width: auto;
     float: left;
-    background-color: blue;
     max-width: 500px;
 }
 

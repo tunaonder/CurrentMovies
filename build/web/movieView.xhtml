@@ -19,8 +19,7 @@
                                 <p:graphicImage url="#{movieManager.displayedMovie.imageUrl}" class="detailedImageView" />
 
                                 <div >
-
-                                    <h:outputText value="Cast" style="font-size: 25px; margin-left: 20px; color: goldenrod;" />
+                                                        <h:outputText value="Cast" style="font-size: 25px; margin-left: 20px; color: goldenrod;" />
                                     <br/>
                                     <c:if test="#{movieManager.displayedMovie.cast.size() >=1}">
                                         <h:outputText value="#{movieManager.displayedMovie.cast.get(0)}" class="detailedCast" />
@@ -43,6 +42,8 @@
                                         <br/>
                                     </c:if>
 
+                
+
                                     <h:outputText value="MPAA-Rating: #{movieManager.displayedMovie.rating}" class="detailedRating" />
                                     <br/>
                                     <h:outputText value="Release Date: #{movieManager.displayedMovie.release_date}" class="detailedDate" />
@@ -56,7 +57,7 @@
                                 <div>
                                     <img src="resources/images/critics.jpg" style="width: 100px;"/>
                                     <br/>
-                                    <h:outputText value="Critics Score: #{movieManager.displayedMovie.critics_score}" class="detailedScore" />
+                                    <h:outputText value="Metacore: #{movieManager.displayedMovie.meta_score}" class="detailedScore" />
                                 </div>
 
 
@@ -65,7 +66,7 @@
                                     <img src="resources/images/audience.jpg" style="width: 100px;"/>
                                     <br/>
 
-                                    <h:outputText value="Audience Score: #{movieManager.displayedMovie.audience_score}" class="detailedScore" />
+                                    <h:outputText value="IMDB rating: #{movieManager.displayedMovie.imdb_score}" class="detailedScore" />
                                 </div>
 
 

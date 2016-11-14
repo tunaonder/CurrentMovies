@@ -6,6 +6,7 @@
 package com.movienow.entityclasses;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -14,24 +15,24 @@ import java.util.ArrayList;
 public class Movie {
 
     String title;
-    int year;
+    String year;
     String rating;
     String runtime;
     String release_date;
-    int critics_score;
-    int audience_score;
+    String meta_score;
+    String imdb_score;
     String synopsis;
     String imageUrl;
-    ArrayList<String> cast = new ArrayList<>();
+    List<String> cast = new ArrayList<>();
 
-    public Movie(String title, int year, String rating, String runtime, String release_date, int critics_score, int audience_score, String synopsis, String imageUrl, ArrayList<String> cast) {
+    public Movie(String title, String year, String rating, String runtime, String release_date, String meta_score, String imdb_score, String synopsis, String imageUrl, List<String> cast) {
         this.title = title;
         this.year = year;
         this.rating = rating;
         this.runtime = runtime;
         this.release_date = release_date;
-        this.critics_score = critics_score;
-        this.audience_score = audience_score;
+        this.meta_score = meta_score;
+        this.imdb_score = imdb_score;
         this.synopsis = synopsis;
         this.imageUrl = imageUrl;
         this.cast = cast;
@@ -41,7 +42,7 @@ public class Movie {
         return title;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
@@ -57,14 +58,6 @@ public class Movie {
         return release_date;
     }
 
-    public int getCritics_score() {
-        return critics_score;
-    }
-
-    public int getAudience_score() {
-        return audience_score;
-    }
-
     public String getSynopsis() {
         return synopsis;
     }
@@ -73,8 +66,18 @@ public class Movie {
         return imageUrl;
     }
 
-    public ArrayList<String> getCast() {
+    public List<String> getCast() {
         return cast;
     }
+
+    public String getMeta_score() {
+        return meta_score;
+    }
+
+    public String getImdb_score() {
+        return imdb_score;
+    }
+    
+    
 
 }
